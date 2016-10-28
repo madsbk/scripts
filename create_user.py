@@ -32,9 +32,11 @@ def main(args):
 
     with open('/home/%s/.ssh/authorized_keys'%args.username, 'w') as f:
         f.write("%s\n"%args.pub_key)
-    
+
     bash_cmd("chmod 600 /home/%s/.ssh/authorized_keys"%args.username)
     bash_cmd("chown -R {0:s}:{0:s} /home/{0:s}/.ssh".format(args.username))
+    bash_cmd("chown -R {0:s}:{0:s} /home/{0:s}/my_password".format(args.username))
+    bash_cmd("chmod 600 /home/%s/my_password"%args.username)
 
 
 
